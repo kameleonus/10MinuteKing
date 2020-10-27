@@ -22,6 +22,7 @@ public class Main {
         year=parseInt(bufferedReader.readLine());
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
+        Hunt hunt = new Hunt();
         //pobieranie zasobów z pliku txt, inaczej save
         System.out.println("The year is "+year+" and the audience begins...");
         System.out.println();
@@ -632,9 +633,15 @@ public class Main {
                     System.out.println("Queen");
                     int problem = random.nextInt(6);
                     switch (problem){
-                        case 1:{System.out.println("You should get some rest");
+                        case 1:{System.out.println("How about we go hunting?");
                             if(Choice.wybor()==1){
-                                happines++;
+                                if(hunt.hunt()==1)
+                                {
+                                    death=true;
+                                }
+                                else{
+                                    food+=2;
+                                }
                             }
                             else{
                                 happines--;
@@ -689,6 +696,7 @@ public class Main {
             }if(money>=10){
                 money=10;
             }
+            System.out.println();
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
         }while(System.currentTimeMillis()/1000-start<600 && !death);
         year++;
