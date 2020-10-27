@@ -23,7 +23,9 @@ public class Main {
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
         //pobieranie zasobów z pliku txt, inaczej save
-	    long start= (int) (System.currentTimeMillis()/1000);
+        System.out.println("The year is "+year+" and the audience begins...");
+        System.out.println();
+	    long start=System.currentTimeMillis()/1000;
         do{
             Random random = new Random();
             int character = random.nextInt(11);
@@ -244,7 +246,7 @@ public class Main {
                         }break;
                         }case 4:{System.out.println("We had a great harvest what to do with all that grain?");
                             if(Choice.wybor2()==1){
-                            happines+=2;
+                            happines++;
                             food++;
                         }
                         else{
@@ -317,7 +319,7 @@ public class Main {
                         }
                         else if(Choice.wybor()==2){
                             money--;
-                            food++;
+                            iron++;
                         }
                         else{
                             happines++;
@@ -468,6 +470,7 @@ public class Main {
                             else{
                                 money++;
                                 happines++;
+                                food--;
                             }
                             break;
                         }case 3:{System.out.println("How about creating a trade route between our countries?");
@@ -687,7 +690,7 @@ public class Main {
                 money=10;
             }
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
-        }while(System.currentTimeMillis()/1000-start>600 && !death);
+        }while(System.currentTimeMillis()/1000-start<600 && !death);
         year++;
         if(death){
             System.out.println("Your reign has come to an end but the story continues...");
