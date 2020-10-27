@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int iron,happines,food,money;
-        boolean death =false;
+        boolean death = false;
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -632,7 +632,7 @@ public class Main {
                             else{
                                 happines--;
                             }break;
-                        }case 2:{System.out.println("I am not feeling same in the castle increase the security!");
+                        }case 2:{System.out.println("I am not feeling safe in the castle increase the security!");
                             if(Choice.wybor()==1){
                                 happines++;
                                 money--;
@@ -673,7 +673,6 @@ public class Main {
                     }death= checkIfDead.check(iron,happines,food,money);
                     break;
             }
-            System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
             if(iron>=10){
                 iron=10;
             }if(food>=10){
@@ -683,9 +682,10 @@ public class Main {
             }if(money>=10){
                 money=10;
             }
-        }while(System.currentTimeMillis()/100-start>600 || death);
+            System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
+        }while(System.currentTimeMillis()/100-start>600 && !death);
         if(death){
-            System.out.println("Twe rządy dobiegły końca może sięuda innym razem");
+            System.out.println("Your reign has come to an end but the story continues...");
             PrintWriter printWriter = new PrintWriter("src/zasoby.txt");
             printWriter.println(5);
             printWriter.println(5);
@@ -693,7 +693,7 @@ public class Main {
             printWriter.println(5);
             printWriter.close();
         }else {
-            System.out.println("Czas tej męczarni dobiegł końca czas na przerwę jutro przyjdą kolejni na 10 minutową audiencję");
+            System.out.println("The 10 minute audience is over rest until the next...");
             PrintWriter printWriter = new PrintWriter("src/zasoby.txt");
             printWriter.println(iron);
             printWriter.println(happines);
