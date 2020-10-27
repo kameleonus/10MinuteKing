@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int iron,happines,food,money;
+        int year;
         boolean death = false;
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
@@ -18,6 +19,7 @@ public class Main {
         happines=parseInt(bufferedReader.readLine());
         food=parseInt(bufferedReader.readLine());
         money=parseInt(bufferedReader.readLine());
+        year=parseInt(bufferedReader.readLine());
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
         //pobieranie zasobów z pliku txt, inaczej save
@@ -120,11 +122,13 @@ public class Main {
                         }case 4:{
                             System.out.println("We need better equipment or we will lose the upcoming war");
                             if(Choice.wybor()==1){
-                            iron-=3;
+                            iron++;
                             money--;
+                            happines++;
                         }
                         else{
-                            happines+=2;
+                            food--;
+                            money--;
 
                         }break;
                         }case 5:{System.out.println("During one expedition a soldier found an artifact it " +
@@ -683,7 +687,8 @@ public class Main {
                 money=10;
             }
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
-        }while(System.currentTimeMillis()/100-start>600 && !death);
+        }while(System.currentTimeMillis()/1000-start>600 && !death);
+        year++;
         if(death){
             System.out.println("Your reign has come to an end but the story continues...");
             PrintWriter printWriter = new PrintWriter("src/zasoby.txt");
@@ -691,6 +696,7 @@ public class Main {
             printWriter.println(5);
             printWriter.println(5);
             printWriter.println(5);
+            printWriter.println(year);
             printWriter.close();
         }else {
             System.out.println("The 10 minute audience is over rest until the next...");
@@ -699,6 +705,7 @@ public class Main {
             printWriter.println(happines);
             printWriter.println(food);
             printWriter.println(money);
+            printWriter.println(year);
             printWriter.close(); }
             //zapis do pliku
         //całość działa 10 min około
