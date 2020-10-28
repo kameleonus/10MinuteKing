@@ -11,6 +11,7 @@ public class Main {
         int iron,happines,food,money;
         int year;
         boolean death = false;
+        boolean warehouse= false;
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -85,7 +86,7 @@ public class Main {
                             break;
                             }
                         }
-                    death=checkIfDead.check(iron,happines,food,money);
+                    death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 2:{
                     System.out.println("General");
@@ -150,7 +151,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 3:{
                     System.out.println("Cook");
@@ -208,7 +209,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }if(!death){death=checkIfDead.check(iron,happines,food,money,warehouse);}
                     break;
                 }case 4:{
                     System.out.println("Peasant");
@@ -269,7 +270,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 5:{
                     System.out.println("Merchant");
@@ -333,7 +334,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }if(!death){death=checkIfDead.check(iron,happines,food,money,warehouse);}
                     break;
                 }case 6:{
                     System.out.println("Nobleman");
@@ -391,16 +392,17 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 7:{
                     System.out.println("Advisor");
                     int problem = random.nextInt(6);
                     switch (problem){
-                        case 1:{System.out.println("We should build more warechauses.");
+                        case 1:{System.out.println("We should build more warehouses.");
                             if(Choice.wybor()==1){
-                                food+=2;
-                                money--;
+                                food++;
+                                money-=2;
+                                warehouse=true;
                             }
                             else{
                                 happines--;
@@ -446,7 +448,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 8:{
                     System.out.println("Emissary");
@@ -509,7 +511,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 9:{
                     System.out.println("Misionary");
@@ -566,7 +568,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }case 10:{
                     System.out.println("Treasurer");
@@ -626,7 +628,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
                 }
                 default:
@@ -684,7 +686,7 @@ public class Main {
                         happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
                     break;
             }
             if(iron>=10){
