@@ -12,6 +12,9 @@ public class Main {
         int year;
         boolean death = false;
         boolean warehouse= false;
+        boolean bankreserve= false;
+        boolean scrapmetal= false;
+        boolean mision= false;
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -86,7 +89,7 @@ public class Main {
                             break;
                             }
                         }
-                    death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    death=checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 2:{
                     System.out.println("General");
@@ -124,11 +127,13 @@ public class Main {
                             food++;
                         }break;
                         }case 4:{
-                            System.out.println("We need better equipment or we will lose the upcoming war");
+                            System.out.println("We need better armour and weapons or we will lose the upcoming war we" +
+                                    " can " +
+                                    "leave the old ones for later");
                             if(Choice.wybor()==1){
-                            iron++;
-                            money--;
+                            money-=2;
                             happines++;
+                            scrapmetal=true;
                         }
                         else{
                             food--;
@@ -151,7 +156,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 3:{
                     System.out.println("Cook");
@@ -209,7 +214,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }if(!death){death=checkIfDead.check(iron,happines,food,money,warehouse);}
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 4:{
                     System.out.println("Peasant");
@@ -270,7 +275,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 5:{
                     System.out.println("Merchant");
@@ -334,7 +339,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }if(!death){death=checkIfDead.check(iron,happines,food,money,warehouse);}
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 6:{
                     System.out.println("Nobleman");
@@ -392,7 +397,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 7:{
                     System.out.println("Advisor");
@@ -448,7 +453,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 8:{
                     System.out.println("Emissary");
@@ -511,7 +516,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 9:{
                     System.out.println("Misionary");
@@ -519,7 +524,8 @@ public class Main {
                     switch (problem){
                         case 1:{System.out.println("We came in peace to bring the message of our savior.");
                             if(Choice.wybor()==1){
-                                happines++;
+                                happines--;
+                                mision=true;
                             }
                             else{
                                 money++;
@@ -568,7 +574,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 10:{
                     System.out.println("Treasurer");
@@ -603,10 +609,10 @@ public class Main {
                         else{
                             happines++;
                         }break;
-                        }case 4:{System.out.println("We could use some of our founds to import new types of plants.");
+                        }case 4:{System.out.println("We should create a reserve of money for the future");
                         if(Choice.wybor()==1){
-                            money--;
-                            food+=2;
+                            money-=2;
+                            bankreserve=true;
                         }
                         else{
                             money++;
@@ -628,7 +634,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }
                 default:
@@ -686,7 +692,7 @@ public class Main {
                         happines++;
                         break;
                         }
-                    }death=checkIfDead.check(iron,happines,food,money,warehouse);
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
             }
             if(iron>=10){
@@ -699,6 +705,35 @@ public class Main {
                 money=10;
             }
             System.out.println();
+            if(death && food<=0){
+                if(warehouse){
+                    death=false;
+                    food=3;
+                    warehouse=false;
+                    System.out.println("We used our reserves to fight the food shortage");
+                }
+            }if(death && iron<=0){
+                if(scrapmetal){
+                    death=false;
+                    iron=3;
+                    scrapmetal=false;
+                    System.out.println("We used the scrap metal to fix the shortage of iron");
+                }
+            }if(death && money<=0){
+                if(bankreserve){
+                    death=false;
+                    money=3;
+                    bankreserve=false;
+                    System.out.println("We used the money reserve to not go bankrupt");
+                }
+            }if(death && food<=0){
+                if(mision){
+                    death=false;
+                    happines=3;
+                    mision=false;
+                    System.out.println("We used the misionaries for help to quench the riot ");
+                }
+            }
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
         }while(System.currentTimeMillis()/1000-start<600 && !death);
         year++;
