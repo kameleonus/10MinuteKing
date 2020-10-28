@@ -183,10 +183,10 @@ public class Main {
                                 " amount of servings could you do something about it.");
                         if(Choice.wybor()==1){
                             happines++;
-                            food--;
+                            money--;
                         }
                         else{
-                            happines--;
+                            food-=2;
                         }break;
                         }case 4:{System.out.println("After the last party we have many leftovers should i give it to " +
                                 "the people or sell to the merchants?" +
@@ -549,7 +549,7 @@ public class Main {
                             happines++;
 
                         }break;
-                        }case 4:{System.out.println("We help your people and some of us going into other countries " +
+                        }case 4:{System.out.println("We help your people and some of us going to other countries " +
                                 "could we count on you?");
                         if(Choice.wybor()==1){
                             money--;
@@ -705,29 +705,29 @@ public class Main {
                 money=10;
             }
             System.out.println();
-            if(death && food<=0){
-                if(warehouse){
+            if(warehouse){
+                if(death && food<=0){
                     death=false;
                     food=3;
                     warehouse=false;
                     System.out.println("We used our reserves to fight the food shortage");
                 }
-            }if(death && iron<=0){
-                if(scrapmetal){
+            }if(scrapmetal){
+                if(death && iron<=0){
                     death=false;
                     iron=3;
                     scrapmetal=false;
                     System.out.println("We used the scrap metal to fix the shortage of iron");
                 }
-            }if(death && money<=0){
-                if(bankreserve){
+            }if(bankreserve){
+                if(death && money<=0){
                     death=false;
                     money=3;
                     bankreserve=false;
                     System.out.println("We used the money reserve to not go bankrupt");
                 }
-            }if(death && food<=0){
-                if(mision){
+            }if(mision){
+                if(death && food<=0){
                     death=false;
                     happines=3;
                     mision=false;
@@ -735,6 +735,7 @@ public class Main {
                 }
             }
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
+            System.out.println();
         }while(System.currentTimeMillis()/1000-start<600 && !death);
         year++;
         if(death){
