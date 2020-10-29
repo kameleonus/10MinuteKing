@@ -1,11 +1,9 @@
 package com.company;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Hunt {
     int hunt(){
-        Random random = new Random();
         System.out.println("You strive through the wood when you see a dear.");
         System.out.println("You chase after it for a while when you encounter a bear");
         System.out.println("What do you do?");

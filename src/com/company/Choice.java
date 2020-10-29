@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Choice {
     public static int wybor() {
-        System.out.println("1.Tak");
-        System.out.println("2.Nie");
+        System.out.println("1.Yes");
+        System.out.println("2.No");
         Scanner scanner = new Scanner(System.in);
         int x = scanner.nextInt();
         if (x == 1) {

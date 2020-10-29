@@ -7,11 +7,10 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Main {
-
+    public static boolean death = false;
     public static void main(String[] args) throws IOException {
         int iron,happines,food,money;
         int year;
-        boolean death = false;
         boolean warehouse= false;
         boolean bankreserve= false;
         boolean scrapmetal= false;
@@ -30,9 +29,10 @@ public class Main {
         name=bufferedReader.readLine();
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
+        SetDead setDead = new SetDead();
         Hunt hunt = new Hunt();
         //pobieranie zasobów z pliku txt, inaczej save
-        System.out.println("The year is "+year+" and the audience of King"+name+" begins...");
+        System.out.println("The year is "+year+" and the audience of King "+name+" begins...");
         System.out.println();
 	    long start=System.currentTimeMillis()/1000;
         do{
@@ -104,7 +104,7 @@ public class Main {
                             if(Choice.wybor()==1){
                                 food--;
                                 money-=2;
-                                happines++;
+                                happines+=2;
                             }
                             else{
                                 happines--;
@@ -648,7 +648,7 @@ public class Main {
                             if(Choice.wybor()==1){
                                 if(hunt.hunt()==1)
                                 {
-                                    death=true;
+                                    death=setDead.dead();
                                 }
                                 else{
                                     food+=2;
@@ -685,7 +685,7 @@ public class Main {
                         }break;
                         }case 5:{System.out.println("You should finish it fast and go get some rest");
                         if(Choice.wybor()==1) {
-                            death = true;
+                            death = setDead.dead();
                         } else{
                             happines++;
                         }break;
