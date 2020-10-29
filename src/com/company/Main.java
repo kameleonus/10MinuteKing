@@ -394,6 +394,7 @@ public class Main {
                         }
                         else{
                             happines++;
+                            money--;
                         }break;
                         }
                         default:
