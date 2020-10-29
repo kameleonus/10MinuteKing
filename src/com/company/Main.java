@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.*;
 import java.util.Random;
+import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
@@ -15,6 +16,8 @@ public class Main {
         boolean bankreserve= false;
         boolean scrapmetal= false;
         boolean mision= false;
+        String name ="";
+        Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -24,11 +27,12 @@ public class Main {
         food=parseInt(bufferedReader.readLine());
         money=parseInt(bufferedReader.readLine());
         year=parseInt(bufferedReader.readLine());
+        name=bufferedReader.readLine();
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
         Hunt hunt = new Hunt();
         //pobieranie zasobów z pliku txt, inaczej save
-        System.out.println("The year is "+year+" and the audience begins...");
+        System.out.println("The year is "+year+" and the audience of King"+name+" begins...");
         System.out.println();
 	    long start=System.currentTimeMillis()/1000;
         do{
@@ -64,9 +68,10 @@ public class Main {
                             }case 3:{System.out.println("We caught a noblemans son stealing should we get money from " +
                                     "his father to pay for his freedom?");
                                 if(Choice.wybor()==1){
-                                money++;
-                            }
-                            break;
+                                money++;}
+                                else {
+                                    happines--;
+                                }break;
                             }case 4:{System.out.println("Can you fire that servant? He iritates me.");
                             if(Choice.wybor()==0){
                                 happines--;
@@ -320,13 +325,10 @@ public class Main {
 
                         }break;
                         }case 5:{System.out.println("Want to buy something?");
-                        if(Choice.wybor4()==1){
+                        int x =Choice.wybor4();
+                        if(x==1){
                             money--;
                             food++;
-                        }
-                        else if(Choice.wybor()==2){
-                            money--;
-                            iron++;
                         }
                         else{
                             happines++;
@@ -382,7 +384,7 @@ public class Main {
                         else{
                             happines--;
                         }break;
-                        }case 5:{System.out.println("We have to less influence we need more or the other classes will" +
+                        }case 5:{System.out.println("We have to few influence we need more or the other classes will" +
                                 " take over");
                         if(Choice.wybor()==1){
                             money+=2;
@@ -412,7 +414,7 @@ public class Main {
                             else{
                                 happines--;
                             }break;
-                        }case 2:{System.out.println("We need ti tighten our security");
+                        }case 2:{System.out.println("We need to tighten our security");
                             if(Choice.wybor()==1){
                                 iron--;
                                 money--;
@@ -428,6 +430,7 @@ public class Main {
                             money--;
                         }
                         else{
+                            happines--;
                             money++;
                         }break;
                         }case 4:{System.out.println("We need to expand the mine");
@@ -746,6 +749,8 @@ public class Main {
             printWriter.println(5);
             printWriter.println(5);
             printWriter.println(year);
+            System.out.println("Podaj imię następcy: ");
+            printWriter.println(scanner.nextLine());
             printWriter.close();
         }else {
             System.out.println("The 10 minute audience is over rest until the next...");
