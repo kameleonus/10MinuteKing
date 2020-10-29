@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Main {
-    public static boolean death = false;
+
     public static void main(String[] args) throws IOException, InterruptedException {
         int iron,happines,food,money;
         int year;
@@ -15,6 +15,7 @@ public class Main {
         boolean bankreserve= false;
         boolean scrapmetal= false;
         boolean mision= false;
+        boolean death = false;
         String name;
         Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
