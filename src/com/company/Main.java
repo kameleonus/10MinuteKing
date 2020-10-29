@@ -7,7 +7,6 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Main {
-    public static boolean death = false;
     public static void main(String[] args) throws IOException, InterruptedException {
         int iron,happines,food,money;
         int year;
@@ -15,6 +14,7 @@ public class Main {
         boolean bankreserve= false;
         boolean scrapmetal= false;
         boolean mision= false;
+        boolean death = false;
         String name;
         Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
@@ -181,6 +181,7 @@ public class Main {
                         }case 2:{System.out.println("Want to try this dish of the new species we found last month? ");
                             if(Choice.wybor()==1){
                                 death=true;
+                                System.out.println("The food was contaminated ");
                             }
                             else{
                                 happines++;
@@ -321,6 +322,7 @@ public class Main {
                         }case 4:{System.out.println("Care for some of the finest wine?");
                         if(Choice.wybor()==1){
                             death=true;
+                            System.out.println("It was poisoned !");
                         }
                         else{
                             happines++;
@@ -402,7 +404,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 7:{
                     System.out.println("Advisor");
@@ -459,7 +461,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 8:{
                     System.out.println("Emissary");
@@ -522,7 +524,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 9:{
                     System.out.println("Misionary");
@@ -580,7 +582,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }case 10:{
                     System.out.println("Treasurer");
@@ -640,7 +642,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
                 }
                 default:
@@ -698,7 +700,7 @@ public class Main {
                         happines++;
                         break;
                         }
-                    }death= checkIfDead.check(iron,happines,food,money);
+                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
                     break;
             }
             if(iron>=10){
