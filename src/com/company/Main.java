@@ -7,6 +7,7 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Main {
+    public static boolean death = false;
     public static void main(String[] args) throws IOException, InterruptedException {
         int iron,happines,food,money;
         int year;
@@ -14,7 +15,6 @@ public class Main {
         boolean bankreserve= false;
         boolean scrapmetal= false;
         boolean mision= false;
-        boolean death = false;
         String name;
         Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
@@ -29,7 +29,6 @@ public class Main {
         name=bufferedReader.readLine();
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
-        SetDead setDead = new SetDead();
         Hunt hunt = new Hunt();
         //pobieranie zasobów z pliku txt, inaczej save
         System.out.println("The year is "+year+" and the audience of King "+name+" begins...");
@@ -404,7 +403,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 7:{
                     System.out.println("Advisor");
@@ -461,7 +460,7 @@ public class Main {
                             happines++;
                         }break;
 
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 8:{
                     System.out.println("Emissary");
@@ -524,7 +523,7 @@ public class Main {
                             happines++;
                         break;
                         }
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 9:{
                     System.out.println("Misionary");
@@ -582,7 +581,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }case 10:{
                     System.out.println("Treasurer");
@@ -642,7 +641,7 @@ public class Main {
                             happines++;
                             break;
                         }
-                    }if(!death){death= checkIfDead.check(iron,happines,food,money);}
+                    }death= checkIfDead.check(iron,happines,food,money);
                     break;
                 }
                 default:
@@ -653,7 +652,7 @@ public class Main {
                             if(Choice.wybor()==1){
                                 if(hunt.hunt()==1)
                                 {
-                                    death=setDead.dead();
+                                    death=true;
                                 }
                                 else{
                                     food+=2;
@@ -690,7 +689,7 @@ public class Main {
                         }break;
                         }case 5:{System.out.println("You should finish it fast and go get some rest");
                         if(Choice.wybor()==1) {
-                            death = setDead.dead();
+                            death = true;
                         } else{
                             happines++;
                         }break;
