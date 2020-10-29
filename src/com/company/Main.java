@@ -8,14 +8,14 @@ import static java.lang.Integer.parseInt;
 
 public class Main {
     public static boolean death = false;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         int iron,happines,food,money;
         int year;
         boolean warehouse= false;
         boolean bankreserve= false;
         boolean scrapmetal= false;
         boolean mision= false;
-        String name ="";
+        String name;
         Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
@@ -35,7 +35,9 @@ public class Main {
         System.out.println("The year is "+year+" and the audience of King "+name+" begins...");
         System.out.println();
 	    long start=System.currentTimeMillis()/1000;
+	    long stop;
         do{
+            stop = System.currentTimeMillis()/1000;
             Random random = new Random();
             int character = random.nextInt(11);
             switch (character){
@@ -739,7 +741,8 @@ public class Main {
             }
             System.out.println("Iron: "+iron+" Happiness: "+happines +" Food: "+ food+ " Money: "+money);
             System.out.println();
-        }while(System.currentTimeMillis()/1000-start<600 && !death);
+            Thread.sleep(100);
+        }while(stop-start<600 && !death);
         year++;
         if(death){
             System.out.println("Your reign has come to an end but the story continues...");
