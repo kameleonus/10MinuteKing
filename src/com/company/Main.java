@@ -268,7 +268,9 @@ public class Main {
                             money+=2;
                         }break;
                         }case 5:{
-                            System.out.println("I think my neighbour is stealing my chickens can i get revenge?");
+                            System.out.println("I think my neighbour is stealing my chickens and the guards are " +
+                                    "ignoring me could you give them a word?" +
+                                    " ?");
                             if(Choice.wybor()==1){
                             happines++;
                             food--;
