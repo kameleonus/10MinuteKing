@@ -798,7 +798,7 @@ public class control {
     }
 
     @FXML
-    int wybor() throws InterruptedException {
+    int wybor(){
         this.Yes.setText("1.Yes");
         this.No.setText("2.No");
         int x = this.yes();
@@ -811,7 +811,7 @@ public class control {
     }
 
     @FXML
-    int wybor2() throws InterruptedException {
+    int wybor2() {
         this.Yes.setText("1.People");
         this.No.setText("2.Sell");
         int x = this.yes();
@@ -824,7 +824,7 @@ public class control {
     }
 
     @FXML
-    int wybor3() throws InterruptedException {
+    int wybor3(){
         this.Yes.setText("1.Kill");
         this.No.setText("2.They will be good");
         int x = this.yes();
@@ -837,7 +837,7 @@ public class control {
     }
 
     @FXML
-    int wybor4() throws InterruptedException {
+    int wybor4(){
         this.Yes.setText("1.Meat");
         this.No.setText("2.Alcohol");
         int x = this.yes();
