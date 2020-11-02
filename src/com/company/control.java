@@ -1,14 +1,8 @@
-
 package com.company;
 
 import javafx.fxml.FXML;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Random;
 
 import javafx.scene.control.Button;
@@ -29,35 +23,37 @@ public class control {
     int happines;
     int food;
     int money;
+    boolean warehouse = false;
+    boolean bankreserve = false;
+    boolean scrapmetal = false;
+    boolean mision = false;
+    boolean death = false;
+    long start = System.currentTimeMillis()/1000;
+
     @FXML
     void game() throws IOException{
-        boolean warehouse = false;
-        boolean bankreserve = false;
-        boolean scrapmetal = false;
-        boolean mision = false;
-        boolean death = false;
+
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-         iron = Integer.parseInt(bufferedReader.readLine());
-         happines = Integer.parseInt(bufferedReader.readLine());
-         food = Integer.parseInt(bufferedReader.readLine());
-         money = Integer.parseInt(bufferedReader.readLine());
+        iron = Integer.parseInt(bufferedReader.readLine());
+        happines = Integer.parseInt(bufferedReader.readLine());
+        food = Integer.parseInt(bufferedReader.readLine());
+        money = Integer.parseInt(bufferedReader.readLine());
         int year = Integer.parseInt(bufferedReader.readLine());
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
         Message_change("The year is " + year + " and the audience of the King begins...");
-        long start = System.currentTimeMillis()/1000;
         do {
             Random random = new Random();
             int character = random.nextInt(11);
             int problem;
-            switch(character) {
+            switch (character) {
                 case 1:
                     person_change("Guard");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("King we need new armour sets because the old ones are getting rusty ");
                             if (wybor() == 1) {
@@ -110,7 +106,7 @@ public class control {
                 case 2:
                     person_change("General");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("We need to get new recruits because the enemy is raiding us");
                             if (wybor() == 1) {
@@ -171,7 +167,7 @@ public class control {
                 case 3:
                     person_change("Cook");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("It's about time we make a feast? ");
                             if (wybor() == 1) {
@@ -229,7 +225,7 @@ public class control {
                 case 4:
                     person_change("Peasant");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("Could you lover the taxes the crops are low this year?");
                             if (wybor() == 1) {
@@ -289,7 +285,7 @@ public class control {
                 case 5:
                     person_change("Merchant");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("We come to get the allowance to sell this good from our neighbour will it be possible? ");
                             if (wybor() == 1) {
@@ -350,7 +346,7 @@ public class control {
                 case 6:
                     person_change("Nobleman");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("How about we get some of the iron reserved for the army?");
                             if (wybor() == 1) {
@@ -411,7 +407,7 @@ public class control {
                 case 7:
                     person_change("Advisor");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("We should build more warehouses.");
                             if (wybor() == 1) {
@@ -470,7 +466,7 @@ public class control {
                 case 8:
                     person_change("Emissary");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("I came to negotiate the peace treaty.");
                             if (wybor() == 1) {
@@ -536,7 +532,7 @@ public class control {
                 case 9:
                     person_change("Misionary");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("We came in peace to bring the message of our savior.");
                             if (wybor() == 1) {
@@ -593,7 +589,7 @@ public class control {
                 case 10:
                     person_change("Treasurer");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("We need to reform the taxes!");
                             if (wybor() == 1) {
@@ -653,7 +649,7 @@ public class control {
                 default:
                     person_change("Queen");
                     problem = random.nextInt(6);
-                    switch(problem) {
+                    switch (problem) {
                         case 1:
                             Message_change("How about we go hunting?");
                             if (wybor() == 1) {
@@ -685,7 +681,7 @@ public class control {
                             }
                             break;
                         case 4:
-                           Message_change("The general is getting on my nerves you should talk to him");
+                            Message_change("The general is getting on my nerves you should talk to him");
                             if (wybor() == 1) {
                                 --iron;
                                 ++happines;
@@ -768,29 +764,29 @@ public class control {
             }
 
             stuff.setText("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
-        } while(System.currentTimeMillis()/1000-start<600 && !death);
+        }while(System.currentTimeMillis()/1000-start>600 && !death);
+              PrintWriter printWriter;
 
-        ++year;
-        PrintWriter printWriter;
-        if (death) {
-            Message_change("Your reign has come to an end but the story continues...");
-            printWriter = new PrintWriter("src/zasoby.txt");
-            printWriter.println(5);
-            printWriter.println(5);
-            printWriter.println(5);
-            printWriter.println(5);
-        } else {
-            Message_change("The 10 minute audience is over rest until the next...");
-            printWriter = new PrintWriter("src/zasoby.txt");
-            printWriter.println(iron);
-            printWriter.println(happines);
-            printWriter.println(food);
-            printWriter.println(money);
+              if (death) {
+                  printWriter = new PrintWriter("src/zasoby.txt");
+                  printWriter.println(5);
+                  printWriter.println(5);
+                  printWriter.println(5);
+                  printWriter.println(5);
+              } else {
+                  printWriter = new PrintWriter("src/zasoby.txt");
+                  printWriter.println(iron);
+                  printWriter.println(happines);
+                  printWriter.println(food);
+                  printWriter.println(money);
 
-        }
-        printWriter.println(year);
-        printWriter.close();
-    }
+              }
+
+              printWriter.println(year);
+              printWriter.close();
+          }
+
+
 
     @FXML
     int yes() {
@@ -831,7 +827,7 @@ public class control {
     @FXML
     int wybor3(){
         this.Yes.setText("1.Kill");
-        this.No.setText("2.They will be good");
+        this.No.setText("2.Leave");
         int x = this.yes();
         int y = this.no();
         if (x == 1) {
