@@ -21,10 +21,11 @@ public class control {
     private Label Person;
     @FXML
     private Label message;
-
+    @FXML
+    private Label stuff;
 
     @FXML
-    void game() throws IOException {
+    void game() throws IOException, InterruptedException {
         boolean warehouse = false;
         boolean bankreserve = false;
         boolean scrapmetal = false;
@@ -180,7 +181,7 @@ public class control {
                             Message_change("Want to try this dish of the new species we found last month? ");
                             if (wybor() == 1) {
                                 death = true;
-                                System.out.println("The food was contaminated ");
+                                Message_change("The food was contaminated ");
                             } else {
                                 ++happines;
                             }
@@ -761,8 +762,7 @@ public class control {
                 }
             }
 
-            System.out.println("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
-            System.out.println();
+            stuff.setText("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
         } while(System.currentTimeMillis()/1000-start<600 && !death);
 
         ++year;
@@ -798,7 +798,7 @@ public class control {
     }
 
     @FXML
-    int wybor() {
+    int wybor() throws InterruptedException {
         this.Yes.setText("1.Yes");
         this.No.setText("2.No");
         int x = this.yes();
@@ -811,7 +811,7 @@ public class control {
     }
 
     @FXML
-    int wybor2() {
+    int wybor2() throws InterruptedException {
         this.Yes.setText("1.People");
         this.No.setText("2.Sell");
         int x = this.yes();
@@ -824,7 +824,7 @@ public class control {
     }
 
     @FXML
-    int wybor3() {
+    int wybor3() throws InterruptedException {
         this.Yes.setText("1.Kill");
         this.No.setText("2.They will be good");
         int x = this.yes();
@@ -837,7 +837,7 @@ public class control {
     }
 
     @FXML
-    int wybor4() {
+    int wybor4() throws InterruptedException {
         this.Yes.setText("1.Meat");
         this.No.setText("2.Alcohol");
         int x = this.yes();
@@ -860,7 +860,7 @@ public class control {
     }
 
     @FXML
-    int hunt() {
+    int hunt() throws InterruptedException {
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
         int choice = this.wybor();
         if (choice == 1) {
