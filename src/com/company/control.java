@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Random;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class control {
@@ -23,8 +22,6 @@ public class control {
     @FXML
     private Label message;
 
-    public control() {
-    }
 
     @FXML
     void game() throws IOException {
@@ -44,21 +41,20 @@ public class control {
         int year = Integer.parseInt(bufferedReader.readLine());
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
-        control control = new control();
-        control.Message_change("The year is " + year + " and the audience of the King begins...");
-
+        Message_change("The year is " + year + " and the audience of the King begins...");
+        long start = System.currentTimeMillis()/1000;
         do {
             Random random = new Random();
             int character = random.nextInt(11);
             int problem;
             switch(character) {
                 case 1:
-                    control.person_change("Guard");
+                    person_change("Guard");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("King we need new armour sets because the old ones are getting rusty ");
-                            if (control.wybor() == 1) {
+                            Message_change("King we need new armour sets because the old ones are getting rusty ");
+                            if (wybor() == 1) {
                                 --iron;
                                 --money;
                             } else {
@@ -66,8 +62,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("We need more guards we serve a long time and we need more rest");
-                            if (control.wybor() == 1) {
+                            Message_change("We need more guards we serve a long time and we need more rest");
+                            if (wybor() == 1) {
                                 --food;
                                 --money;
                                 ++happines;
@@ -76,22 +72,22 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("We caught a noblemans son stealing should we get money from his father to pay for his freedom?");
-                            if (control.wybor() == 1) {
+                            Message_change("We caught a noblemans son stealing should we get money from his father to pay for his freedom?");
+                            if (wybor() == 1) {
                                 ++money;
                             } else {
                                 --happines;
                             }
                             break;
                         case 4:
-                            control.Message_change("Can you fire that servant? He iritates me.");
-                            if (control.wybor() == 0) {
+                            Message_change("Can you fire that servant? He iritates me.");
+                            if (wybor() == 0) {
                                 --happines;
                             }
                             break;
                         case 5:
-                            control.Message_change("Can we have bigger food rations?");
-                            if (control.wybor() == 1) {
+                            Message_change("Can we have bigger food rations?");
+                            if (wybor() == 1) {
                                 --food;
                                 ++happines;
                             } else {
@@ -99,19 +95,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("Have a nice day my king may your reign be glorious");
+                            Message_change("Have a nice day my king may your reign be glorious");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 2:
-                    control.person_change("General");
+                    person_change("General");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("We need to get new recruits because the enemy is raiding us");
-                            if (control.wybor() == 1) {
+                            Message_change("We need to get new recruits because the enemy is raiding us");
+                            if (wybor() == 1) {
                                 --food;
                                 money -= 2;
                                 happines += 2;
@@ -121,8 +117,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("After our last battle the spoils were great should we turn it into money?");
-                            if (control.wybor() == 1) {
+                            Message_change("After our last battle the spoils were great should we turn it into money?");
+                            if (wybor() == 1) {
                                 money += 3;
                             } else {
                                 ++happines;
@@ -131,8 +127,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("Some merchants are getting bossy around town should we arrest one or two to make them stop?");
-                            if (control.wybor() == 1) {
+                            Message_change("Some merchants are getting bossy around town should we arrest one or two to make them stop?");
+                            if (wybor() == 1) {
                                 --happines;
                                 money += 2;
                             } else {
@@ -141,8 +137,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("We need better armour and weapons or we will lose the upcoming war we can leave the old ones for later");
-                            if (control.wybor() == 1) {
+                            Message_change("We need better armour and weapons or we will lose the upcoming war we can leave the old ones for later");
+                            if (wybor() == 1) {
                                 money -= 2;
                                 ++happines;
                                 scrapmetal = true;
@@ -152,27 +148,27 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("During one expedition a soldier found an artifact it could fetch a nice sum");
-                            if (control.wybor() == 1) {
+                            Message_change("During one expedition a soldier found an artifact it could fetch a nice sum");
+                            if (wybor() == 1) {
                                 money += 2;
                             } else {
                                 happines += 2;
                             }
                             break;
                         default:
-                            control.Message_change("The military is as strong as ever");
+                            Message_change("The military is as strong as ever");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 3:
-                    control.person_change("Cook");
+                    person_change("Cook");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("It's about time we make a feast? ");
-                            if (control.wybor() == 1) {
+                            Message_change("It's about time we make a feast? ");
+                            if (wybor() == 1) {
                                 ++happines;
                                 ++food;
                                 --money;
@@ -181,8 +177,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("Want to try this dish of the new species we found last month? ");
-                            if (control.wybor() == 1) {
+                            Message_change("Want to try this dish of the new species we found last month? ");
+                            if (wybor() == 1) {
                                 death = true;
                                 System.out.println("The food was contaminated ");
                             } else {
@@ -190,8 +186,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("I need more ingredients or i won't be able to serve the required amount of servings could you do something about it.");
-                            if (control.wybor() == 1) {
+                            Message_change("I need more ingredients or i won't be able to serve the required amount of servings could you do something about it.");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --money;
                             } else {
@@ -199,16 +195,16 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("After the last party we have many leftovers should i give it to the people or sell to the merchants? ");
-                            if (control.wybor2() == 1) {
+                            Message_change("After the last party we have many leftovers should i give it to the people or sell to the merchants? ");
+                            if (wybor2() == 1) {
                                 ++happines;
                             } else {
                                 ++money;
                             }
                             break;
                         case 5:
-                            control.Message_change("Can i get some new pans and pots? The old ones are starting to stick ");
-                            if (control.wybor() == 1) {
+                            Message_change("Can i get some new pans and pots? The old ones are starting to stick ");
+                            if (wybor() == 1) {
                                 --iron;
                                 ++food;
                             } else {
@@ -216,7 +212,7 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("Here is your dinner my king");
+                            Message_change("Here is your dinner my king");
                             ++happines;
                     }
 
@@ -225,12 +221,12 @@ public class control {
                     }
                     break;
                 case 4:
-                    control.person_change("Peasant");
+                    person_change("Peasant");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("Could you lover the taxes the crops are low this year?");
-                            if (control.wybor() == 1) {
+                            Message_change("Could you lover the taxes the crops are low this year?");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --money;
                             } else {
@@ -239,8 +235,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("The tools are hard to get and expensive can you do something about it? ");
-                            if (control.wybor() == 1) {
+                            Message_change("The tools are hard to get and expensive can you do something about it? ");
+                            if (wybor() == 1) {
                                 --money;
                                 --iron;
                                 ++happines;
@@ -250,8 +246,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("It's the plague the cows are dying!");
-                            if (control.wybor3() == 1) {
+                            Message_change("It's the plague the cows are dying!");
+                            if (wybor3() == 1) {
                                 food -= 2;
                             } else {
                                 --food;
@@ -259,8 +255,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("We had a great harvest what to do with all that grain?");
-                            if (control.wybor2() == 1) {
+                            Message_change("We had a great harvest what to do with all that grain?");
+                            if (wybor2() == 1) {
                                 ++happines;
                                 ++food;
                             } else {
@@ -268,8 +264,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("I think my neighbour is stealing my chickens and the guards are ignoring me could you give them a word? ?");
-                            if (control.wybor() == 1) {
+                            Message_change("I think my neighbour is stealing my chickens and the guards are ignoring me could you give them a word? ?");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --food;
                             } else {
@@ -278,19 +274,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("I am sorry my problem was just dealt with. ");
+                            Message_change("I am sorry my problem was just dealt with. ");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 5:
-                    control.person_change("Merchant");
+                    person_change("Merchant");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("We come to get the allowance to sell this good from our neighbour will it be possible? ");
-                            if (control.wybor() == 1) {
+                            Message_change("We come to get the allowance to sell this good from our neighbour will it be possible? ");
+                            if (wybor() == 1) {
                                 money += 2;
                                 --happines;
                             } else {
@@ -298,8 +294,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("How about you sell us some iron so we can get better weapons from our neighbour?");
-                            if (control.wybor() == 1) {
+                            Message_change("How about you sell us some iron so we can get better weapons from our neighbour?");
+                            if (wybor() == 1) {
                                 iron -= 2;
                                 ++money;
                                 ++happines;
@@ -308,26 +304,26 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("How about investing some money? ");
-                            if (control.wybor() == 1) {
+                            Message_change("How about investing some money? ");
+                            if (wybor() == 1) {
                                 money -= 2;
                                 food += 2;
                             } else {
-                                control.Message_change("OK");
+                                Message_change("OK");
                             }
                             break;
                         case 4:
-                            control.Message_change("Care for some of the finest wine?");
-                            if (control.wybor() == 1) {
+                            Message_change("Care for some of the finest wine?");
+                            if (wybor() == 1) {
                                 death = true;
-                                control.Message_change("It was poisoned !");
+                                Message_change("It was poisoned !");
                             } else {
                                 ++happines;
                             }
                             break;
                         case 5:
-                            control.Message_change("Want to buy something?");
-                            int x = control.wybor4();
+                            Message_change("Want to buy something?");
+                            int x = wybor4();
                             if (x == 1) {
                                 --money;
                                 ++food;
@@ -337,7 +333,7 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("The market is blooming");
+                            Message_change("The market is blooming");
                             ++happines;
                     }
 
@@ -346,12 +342,12 @@ public class control {
                     }
                     break;
                 case 6:
-                    control.person_change("Nobleman");
+                    person_change("Nobleman");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("How about we get some of the iron reserved for the army?");
-                            if (control.wybor() == 1) {
+                            Message_change("How about we get some of the iron reserved for the army?");
+                            if (wybor() == 1) {
                                 --iron;
                                 money += 2;
                             } else {
@@ -360,8 +356,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("It's time to call all neighbouring kings for a bal");
-                            if (control.wybor() == 1) {
+                            Message_change("It's time to call all neighbouring kings for a bal");
+                            if (wybor() == 1) {
                                 --food;
                                 --money;
                                 happines += 2;
@@ -371,8 +367,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("Can you imprison the merchant? He disrespected me! ");
-                            if (control.wybor() == 1) {
+                            Message_change("Can you imprison the merchant? He disrespected me! ");
+                            if (wybor() == 1) {
                                 ++happines;
                                 ++money;
                             } else {
@@ -381,8 +377,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("Could you lend us some of your guards for our travel?");
-                            if (control.wybor() == 1) {
+                            Message_change("Could you lend us some of your guards for our travel?");
+                            if (wybor() == 1) {
                                 --happines;
                                 ++money;
                             } else {
@@ -390,8 +386,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("We have to few influence we need more or the other classes will take over");
-                            if (control.wybor() == 1) {
+                            Message_change("We have to few influence we need more or the other classes will take over");
+                            if (wybor() == 1) {
                                 money += 2;
                                 --happines;
                             } else {
@@ -400,19 +396,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("We have everything we want or need");
+                            Message_change("We have everything we want or need");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 7:
-                    control.person_change("Advisor");
+                    person_change("Advisor");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("We should build more warehouses.");
-                            if (control.wybor() == 1) {
+                            Message_change("We should build more warehouses.");
+                            if (wybor() == 1) {
                                 ++food;
                                 money -= 2;
                                 warehouse = true;
@@ -421,8 +417,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("We need to tighten our security");
-                            if (control.wybor() == 1) {
+                            Message_change("We need to tighten our security");
+                            if (wybor() == 1) {
                                 --iron;
                                 --money;
                                 ++happines;
@@ -431,8 +427,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("We have to get new ceremonial robes for the court");
-                            if (control.wybor() == 1) {
+                            Message_change("We have to get new ceremonial robes for the court");
+                            if (wybor() == 1) {
                                 happines += 2;
                                 --money;
                             } else {
@@ -441,8 +437,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("We need to expand the mine");
-                            if (control.wybor() == 1) {
+                            Message_change("We need to expand the mine");
+                            if (wybor() == 1) {
                                 iron += 2;
                                 --money;
                             } else {
@@ -450,8 +446,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("We have to increase the taxes");
-                            if (control.wybor() == 1) {
+                            Message_change("We have to increase the taxes");
+                            if (wybor() == 1) {
                                 money += 2;
                                 --happines;
                             } else {
@@ -459,19 +455,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("Is everything alright my king?");
+                            Message_change("Is everything alright my king?");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 8:
-                    control.person_change("Emissary");
+                    person_change("Emissary");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("I came to negotiate the peace treaty.");
-                            if (control.wybor() == 1) {
+                            Message_change("I came to negotiate the peace treaty.");
+                            if (wybor() == 1) {
                                 if (iron >= 5) {
                                     ++food;
                                     ++money;
@@ -484,8 +480,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("War it is!");
-                            if (control.wybor() == 1) {
+                            Message_change("War it is!");
+                            if (wybor() == 1) {
                                 --iron;
                                 --happines;
                             } else {
@@ -495,8 +491,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("How about creating a trade route between our countries?");
-                            if (control.wybor() == 1) {
+                            Message_change("How about creating a trade route between our countries?");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --money;
                                 ++food;
@@ -505,8 +501,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("Could our country borrow money from you we will recompensate you with iron");
-                            if (control.wybor() == 1) {
+                            Message_change("Could our country borrow money from you we will recompensate you with iron");
+                            if (wybor() == 1) {
                                 money -= 2;
                                 iron += 2;
                             } else {
@@ -514,8 +510,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("We came to ask for your help in our war against the King of the West");
-                            if (control.wybor() == 1) {
+                            Message_change("We came to ask for your help in our war against the King of the West");
+                            if (wybor() == 1) {
                                 --iron;
                                 ++money;
                                 ++food;
@@ -525,19 +521,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("My king sends his regards");
+                            Message_change("My king sends his regards");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 9:
-                    control.person_change("Misionary");
+                    person_change("Misionary");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("We came in peace to bring the message of our savior.");
-                            if (control.wybor() == 1) {
+                            Message_change("We came in peace to bring the message of our savior.");
+                            if (wybor() == 1) {
                                 --happines;
                                 mision = true;
                             } else {
@@ -545,8 +541,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("We are good at cultivating the land we can share some of our knowledge for a bit of founding");
-                            if (control.wybor() == 1) {
+                            Message_change("We are good at cultivating the land we can share some of our knowledge for a bit of founding");
+                            if (wybor() == 1) {
                                 ++food;
                                 --money;
                             } else {
@@ -554,8 +550,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("Some people disrespect us and threaten us could you help us?");
-                            if (control.wybor() == 1) {
+                            Message_change("Some people disrespect us and threaten us could you help us?");
+                            if (wybor() == 1) {
                                 --iron;
                                 ++money;
                             } else {
@@ -563,8 +559,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("We help your people and some of us going to other countries could we count on you?");
-                            if (control.wybor() == 1) {
+                            Message_change("We help your people and some of us going to other countries could we count on you?");
+                            if (wybor() == 1) {
                                 --money;
                                 ++happines;
                             } else {
@@ -572,8 +568,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("Can we get some land to build a place for our believers?");
-                            if (control.wybor() == 1) {
+                            Message_change("Can we get some land to build a place for our believers?");
+                            if (wybor() == 1) {
                                 money -= 2;
                                 ++happines;
                                 ++food;
@@ -582,19 +578,19 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("Grace our savior!");
+                            Message_change("Grace our savior!");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 case 10:
-                    control.person_change("Treasurer");
+                    person_change("Treasurer");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("We need to reform the taxes!");
-                            if (control.wybor() == 1) {
+                            Message_change("We need to reform the taxes!");
+                            if (wybor() == 1) {
                                 money += 2;
                                 --happines;
                             } else {
@@ -603,8 +599,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("Some soldiers are hoarding a great sum of money and iron we should increase their taxes");
-                            if (control.wybor() == 1) {
+                            Message_change("Some soldiers are hoarding a great sum of money and iron we should increase their taxes");
+                            if (wybor() == 1) {
                                 ++iron;
                                 ++money;
                                 --happines;
@@ -614,8 +610,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("We can sell some of our old weapons and armour for money.");
-                            if (control.wybor() == 1) {
+                            Message_change("We can sell some of our old weapons and armour for money.");
+                            if (wybor() == 1) {
                                 ++money;
                                 --iron;
                             } else {
@@ -623,8 +619,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("We should create a reserve of money for the future");
-                            if (control.wybor() == 1) {
+                            Message_change("We should create a reserve of money for the future");
+                            if (wybor() == 1) {
                                 money -= 2;
                                 bankreserve = true;
                             } else {
@@ -632,8 +628,8 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("The nobles are trying to hoard the money of the regular tax we should collect it as soon as possible");
-                            if (control.wybor() == 1) {
+                            Message_change("The nobles are trying to hoard the money of the regular tax we should collect it as soon as possible");
+                            if (wybor() == 1) {
                                 money += 2;
                                 happines -= 2;
                             } else {
@@ -642,20 +638,20 @@ public class control {
                             }
                             break;
                         default:
-                            control.Message_change("Our country is prospering great!");
+                            Message_change("Our country is prospering great!");
                             ++happines;
                     }
 
                     death = checkIfDead.check(iron, happines, food, money);
                     break;
                 default:
-                    control.person_change("Queen");
+                    person_change("Queen");
                     problem = random.nextInt(6);
                     switch(problem) {
                         case 1:
-                            control.Message_change("How about we go hunting?");
-                            if (control.wybor() == 1) {
-                                if (control.hunt() == 1) {
+                            Message_change("How about we go hunting?");
+                            if (wybor() == 1) {
+                                if (hunt() == 1) {
                                     death = true;
                                 } else {
                                     food += 2;
@@ -665,8 +661,8 @@ public class control {
                             }
                             break;
                         case 2:
-                            control.Message_change("I am not feeling safe in the castle increase the security!");
-                            if (control.wybor() == 1) {
+                            Message_change("I am not feeling safe in the castle increase the security!");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --money;
                             } else {
@@ -674,8 +670,8 @@ public class control {
                             }
                             break;
                         case 3:
-                            control.Message_change("It's time for a feast my king");
-                            if (control.wybor() == 1) {
+                            Message_change("It's time for a feast my king");
+                            if (wybor() == 1) {
                                 ++happines;
                                 --food;
                             } else {
@@ -683,8 +679,8 @@ public class control {
                             }
                             break;
                         case 4:
-                            control.Message_change("The general is getting on my nerves you should talk to him");
-                            if (control.wybor() == 1) {
+                           Message_change("The general is getting on my nerves you should talk to him");
+                            if (wybor() == 1) {
                                 --iron;
                                 ++happines;
                             } else {
@@ -692,15 +688,15 @@ public class control {
                             }
                             break;
                         case 5:
-                            control.Message_change("You should finish it fast and go get some rest");
-                            if (control.wybor() == 1) {
+                            Message_change("You should finish it fast and go get some rest");
+                            if (wybor() == 1) {
                                 death = true;
                             } else {
                                 ++happines;
                             }
                             break;
                         default:
-                            control.Message_change("Are you feeling alright?");
+                            Message_change("Are you feeling alright?");
                             ++happines;
                     }
 
@@ -726,60 +722,58 @@ public class control {
             }
 
             if (warehouse) {
-                control.person_change("Advisor");
+                person_change("Advisor");
                 if (death && food <= 0) {
                     death = false;
                     food = 3;
                     warehouse = false;
-                    control.Message_change("We used our reserves to fight the food shortage");
+                    Message_change("We used our reserves to fight the food shortage");
                 }
             }
 
             if (scrapmetal) {
-                control.person_change("Advisor");
+                person_change("Advisor");
                 if (death && iron <= 0) {
                     death = false;
                     iron = 3;
                     scrapmetal = false;
-                    control.Message_change("We used the scrap metal to fix the shortage of iron");
+                    Message_change("We used the scrap metal to fix the shortage of iron");
                 }
             }
 
             if (bankreserve) {
-                control.person_change("Advisor");
+                person_change("Advisor");
                 if (death && money <= 0) {
                     death = false;
                     money = 3;
                     bankreserve = false;
-                    control.Message_change("We used the money reserve to not go bankrupt");
+                    Message_change("We used the money reserve to not go bankrupt");
                 }
             }
 
             if (mision) {
-                control.person_change("Advisor");
+                person_change("Advisor");
                 if (death && food <= 0) {
                     death = false;
                     happines = 3;
                     mision = false;
-                    control.Message_change("We used the misionaries for help to quench the riot ");
+                    Message_change("We used the misionaries for help to quench the riot ");
                 }
             }
 
             System.out.println("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
             System.out.println();
-        } while(!death);
+        } while(System.currentTimeMillis()/1000-start<600 && !death);
 
         ++year;
         PrintWriter printWriter;
         if (death) {
-            control.Message_change("Your reign has come to an end but the story continues...");
+            Message_change("Your reign has come to an end but the story continues...");
             printWriter = new PrintWriter("src/zasoby.txt");
             printWriter.println(5);
             printWriter.println(5);
             printWriter.println(5);
             printWriter.println(5);
-            printWriter.println(year);
-            printWriter.close();
         } else {
             System.out.println("The 10 minute audience is over rest until the next...");
             printWriter = new PrintWriter("src/zasoby.txt");
@@ -787,9 +781,9 @@ public class control {
             printWriter.println(happines);
             printWriter.println(food);
             printWriter.println(money);
-            printWriter.println(year);
-            printWriter.close();
         }
+        printWriter.println(year);
+        printWriter.close();
 
     }
 
