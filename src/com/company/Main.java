@@ -43,6 +43,7 @@ public class Main extends Application {
         name=bufferedReader.readLine();
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
+        control control = new control();
         Hunt hunt = new Hunt();
         //pobieranie zasobów z pliku txt, inaczej save
         System.out.println("The year is "+year+" and the audience of King "+name+" begins...");
