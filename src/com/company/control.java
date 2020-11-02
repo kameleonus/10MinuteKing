@@ -10,20 +10,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Random;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class control {
     @FXML
-    private Label Yes;
+    private Button Yes;
     @FXML
-    private Label No;
+    private Button No;
     @FXML
     private Label Person;
     @FXML
     private Label message;
     @FXML
     private Label stuff;
-
+    int iron;
+    int happines;
+    int food;
+    int money;
     @FXML
     void game() throws IOException{
         boolean warehouse = false;
@@ -35,10 +40,10 @@ public class control {
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        int iron = Integer.parseInt(bufferedReader.readLine());
-        int happines = Integer.parseInt(bufferedReader.readLine());
-        int food = Integer.parseInt(bufferedReader.readLine());
-        int money = Integer.parseInt(bufferedReader.readLine());
+         iron = Integer.parseInt(bufferedReader.readLine());
+         happines = Integer.parseInt(bufferedReader.readLine());
+         food = Integer.parseInt(bufferedReader.readLine());
+         money = Integer.parseInt(bufferedReader.readLine());
         int year = Integer.parseInt(bufferedReader.readLine());
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
@@ -775,16 +780,16 @@ public class control {
             printWriter.println(5);
             printWriter.println(5);
         } else {
-            System.out.println("The 10 minute audience is over rest until the next...");
+            Message_change("The 10 minute audience is over rest until the next...");
             printWriter = new PrintWriter("src/zasoby.txt");
             printWriter.println(iron);
             printWriter.println(happines);
             printWriter.println(food);
             printWriter.println(money);
+
         }
         printWriter.println(year);
         printWriter.close();
-
     }
 
     @FXML
