@@ -19,32 +19,31 @@ public class control {
     private Label message;
     @FXML
     private Label stuff;
-    int iron;
-    int happines;
-    int food;
-    int money;
-    boolean warehouse = false;
-    boolean bankreserve = false;
-    boolean scrapmetal = false;
-    boolean mision = false;
-    boolean death = false;
-    long start = System.currentTimeMillis()/1000;
 
+//musimy tak że wywołuje same komnikaty i robie im kod z tych randomowych liczb i potem tak lub nie wywołuje się od
+// tego kodu i zwraca zmianę wartości i ponownie wykonuje losoanie liczby i komunikatu
     @FXML
     void game() throws IOException{
-
+        boolean warehouse = false;
+        boolean bankreserve = false;
+        boolean scrapmetal = false;
+        boolean mision = false;
+        boolean death = false;
+        long start = System.currentTimeMillis()/1000;
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        iron = Integer.parseInt(bufferedReader.readLine());
-        happines = Integer.parseInt(bufferedReader.readLine());
-        food = Integer.parseInt(bufferedReader.readLine());
-        money = Integer.parseInt(bufferedReader.readLine());
+        int iron = Integer.parseInt(bufferedReader.readLine());
+        int happines = Integer.parseInt(bufferedReader.readLine());
+        int food = Integer.parseInt(bufferedReader.readLine());
+        int money = Integer.parseInt(bufferedReader.readLine());
         int year = Integer.parseInt(bufferedReader.readLine());
         bufferedReader.close();
+        stuff.setText("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
         CheckIfDead checkIfDead = new CheckIfDead();
         Message_change("The year is " + year + " and the audience of the King begins...");
+
         do {
             Random random = new Random();
             int character = random.nextInt(11);
@@ -764,16 +763,19 @@ public class control {
             }
 
             stuff.setText("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
-        }while(System.currentTimeMillis()/1000-start>600 && !death);
-              PrintWriter printWriter;
 
+        }while(System.currentTimeMillis()/1000-start<600 && !death);
+              PrintWriter printWriter;
+                year++;
               if (death) {
+                  Message_change("Well your reign has ended sadly...");
                   printWriter = new PrintWriter("src/zasoby.txt");
                   printWriter.println(5);
                   printWriter.println(5);
                   printWriter.println(5);
                   printWriter.println(5);
               } else {
+                  Message_change("See you athe the next audience ");
                   printWriter = new PrintWriter("src/zasoby.txt");
                   printWriter.println(iron);
                   printWriter.println(happines);

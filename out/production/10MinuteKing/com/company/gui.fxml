@@ -33,7 +33,10 @@
          </font></Label>
     </top>
     <center>
-        <Label fx:id="message" textFill="#c1bcd0" BorderPane.alignment="CENTER" />
+        <Label fx:id="message" alignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </center>
    <bottom>
       <VBox alignment="CENTER" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
