@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -29,9 +30,19 @@
             </children></VBox>
     </right>
     <top>
-        <Label fx:id="Person" BorderPane.alignment="CENTER" />
+        <Label fx:id="Person" textFill="#c9bdbd" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </top>
     <center>
         <Label fx:id="message" textFill="#c1bcd0" BorderPane.alignment="CENTER" />
     </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#game" text="Start Game" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>
