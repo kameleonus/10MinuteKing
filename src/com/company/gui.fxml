@@ -29,7 +29,10 @@
             </children></VBox>
     </right>
     <top>
-        <Label fx:id="Person" BorderPane.alignment="CENTER" />
+        <Label fx:id="Person" textFill="#c9bdbd" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
     </top>
     <center>
         <Label fx:id="message" textFill="#c1bcd0" BorderPane.alignment="CENTER" />

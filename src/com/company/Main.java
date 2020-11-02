@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.Random;
-import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
@@ -29,8 +28,6 @@ public class Main extends Application {
         boolean scrapmetal= false;
         boolean mision= false;
         boolean death = false;
-        String name;
-        Scanner scanner = new Scanner(System.in);
         File file = new File("src/zasoby.txt");
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -40,13 +37,12 @@ public class Main extends Application {
         food=parseInt(bufferedReader.readLine());
         money=parseInt(bufferedReader.readLine());
         year=parseInt(bufferedReader.readLine());
-        name=bufferedReader.readLine();
         bufferedReader.close();
         CheckIfDead checkIfDead = new CheckIfDead();
         control control = new control();
-        Hunt hunt = new Hunt();
+
         //pobieranie zasobów z pliku txt, inaczej save
-        control.Message_change("The year is "+year+" and the audience of King "+name+" begins...");
+        control.Message_change("The year is "+year+" and the audience of the King begins...");
         Thread.sleep(1000);
         System.out.println();
 	    long start=System.currentTimeMillis()/1000;
@@ -671,7 +667,7 @@ public class Main extends Application {
                     switch (problem){
                         case 1:{control.Message_change("How about we go hunting?");
                             if(control.wybor()==1){
-                                if(hunt.hunt()==1)
+                                if(control.hunt()==1)
                                 {
                                     death=true;
                                 }
@@ -783,7 +779,6 @@ public class Main extends Application {
             printWriter.println(5);
             printWriter.println(5);
             printWriter.println(year);
-            printWriter.println(scanner.nextLine());
             printWriter.close();
         }else {
             System.out.println("The 10 minute audience is over rest until the next...");
