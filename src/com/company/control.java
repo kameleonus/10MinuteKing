@@ -25,7 +25,7 @@ public class control {
     private Label stuff;
 
     @FXML
-    void game() throws IOException, InterruptedException {
+    void game() throws IOException{
         boolean warehouse = false;
         boolean bankreserve = false;
         boolean scrapmetal = false;
@@ -860,7 +860,7 @@ public class control {
     }
 
     @FXML
-    int hunt() throws InterruptedException {
+    int hunt(){
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
         int choice = this.wybor();
         if (choice == 1) {
