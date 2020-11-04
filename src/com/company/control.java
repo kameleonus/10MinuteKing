@@ -19,7 +19,7 @@ public class control {
     private Label message;
     @FXML
     private Label stuff;
- long start = System.currentTimeMillis()/1000;
+    long start = System.currentTimeMillis()/1000;
 //musimy tak że wywołuje same komnikaty i robie im kod z tych randomowych liczb i potem tak lub nie wywołuje się od
 // tego kodu i zwraca zmianę wartości i ponownie wykonuje losoanie liczby i komunikatu
     boolean warehouse = false;
@@ -41,16 +41,18 @@ public class control {
         bufferedReader.close();
     }
     @FXML
-    void game(){
+    void game() throws InterruptedException {
         Message_change("Welcome to the game");
+        Thread.sleep(2000);
+        Message_change("The year is " + year + " and the audience of the King begins...");
     }
     @FXML
-    void game(int w) throws FileNotFoundException{
+    void game(int w) throws FileNotFoundException, InterruptedException {
 
         stuff.setText("Iron: " + iron + " Happiness: " + happines + " Food: " + food + " Money: " + money);
         CheckIfDead checkIfDead = new CheckIfDead();
         Save save = new Save();
-        Message_change("The year is " + year + " and the audience of the King begins...");
+
             Random random = new Random();
             int character = random.nextInt(11);
             int problem;
@@ -772,10 +774,14 @@ public class control {
             if(death)
             {
                 message.setText("You are dead");
+                Thread.sleep(5000);
+                System.exit(1);
 
             }
             else if(System.currentTimeMillis()/1000-start>300){
                 message.setText("we see you next time");
+                Thread.sleep(5000);
+                System.exit(1);
 
             }
           }
@@ -783,12 +789,12 @@ public class control {
 
 
     @FXML
-    void yes() throws FileNotFoundException {
+    void yes() throws FileNotFoundException, InterruptedException {
         game(1);
     }
 
     @FXML
-    void no() throws FileNotFoundException{
+    void no() throws FileNotFoundException, InterruptedException {
         game(0);
     }
 
