@@ -6,12 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.nio.channels.InterruptedByTimeoutException;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws  Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui.fxml"));
         Parent layout = fxmlLoader.load();
         Scene scene = new Scene(layout);
