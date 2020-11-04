@@ -19,7 +19,7 @@ public class control {
     private Label message;
     @FXML
     private Label stuff;
-
+ long start = System.currentTimeMillis()/1000;
 //musimy tak że wywołuje same komnikaty i robie im kod z tych randomowych liczb i potem tak lub nie wywołuje się od
 // tego kodu i zwraca zmianę wartości i ponownie wykonuje losoanie liczby i komunikatu
     boolean warehouse = false;
@@ -40,6 +40,7 @@ public class control {
     public control() throws IOException {
         bufferedReader.close();
     }
+    @FXML
     void game(){
         Message_change("Welcome to the game");
     }
@@ -773,7 +774,7 @@ public class control {
                 message.setText("You are dead");
 
             }
-            else{
+            else if(System.currentTimeMillis()/1000-start>300){
                 message.setText("we see you next time");
 
             }
