@@ -39,6 +39,7 @@ public class control {
     Random random = new Random();
     CheckIfDead checkIfDead = new CheckIfDead();
     Save save = new Save();
+
     public control() throws IOException {
         bufferedReader.close();
     }
@@ -364,15 +365,14 @@ public class control {
             if(death)
             {
                 message.setText("You are dead");
-                Thread.sleep(5000);
-                System.exit(1);
+                end end= new end();
+                end.end();
 
             }
             else if(System.currentTimeMillis()/1000-start>300){
                 message.setText("we see you next time");
-                Thread.sleep(5000);
-                System.exit(1);
-
+                end end= new end();
+                end.end();
             }
           }
 
