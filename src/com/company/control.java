@@ -14,6 +14,8 @@ public class control {
     @FXML
     private Button No;
     @FXML
+    private Button Start0;
+    @FXML
     private Label Person;
     @FXML
     private Label message;
@@ -45,11 +47,13 @@ public class control {
     }
     int character,problem;
     @FXML
-    void game() throws InterruptedException {
+    void game(){
         Message_change("Welcome to the game");
         Message_change("The year is " + year + " and the audience of the King begins...");
         Yes.setDisable(false);
         No.setDisable(false);
+        Start0.setVisible(false);
+        Start0.setDisable(true);
         character = random.nextInt(11);
         switch (character) {
             case 1:
@@ -967,13 +971,13 @@ public class control {
         this.message.setText(mesage);
     }
     @FXML
-    int wybori(int w) {
+    int hunter() {
         return 1;
     }
   @FXML
     int hunt(int w){
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
-        int choice = this.wybori(w);
+        int choice = this.hunter();
         if (choice == 1) {
             return 1;
         } else {

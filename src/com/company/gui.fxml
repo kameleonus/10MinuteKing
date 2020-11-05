@@ -42,7 +42,7 @@
       <VBox alignment="CENTER" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="stuff" text="Iron: 5 Happiness: 5 Food: 5 money: 5" textFill="#e8d9d9" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#game" style="-fx-background-color: #8899AA;" text="Start game" />
+            <Button fx:id="Start0" alignment="CENTER" mnemonicParsing="false" onAction="#game" style="-fx-background-color: #8899AA;" text="Start game" />
          </children>
       </VBox>
    </bottom>
