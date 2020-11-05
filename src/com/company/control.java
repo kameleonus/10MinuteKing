@@ -47,13 +47,12 @@ public class control {
     void game() throws InterruptedException {
         Message_change("Welcome to the game");
         Message_change("The year is " + year + " and the audience of the King begins...");
-        Thread.sleep(2000);
         character = random.nextInt(11);
         switch (character) {
             case 1:
                 person_change("Guard");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("King we need new armour sets because the old ones are getting rusty ");
                         break;
@@ -61,7 +60,7 @@ public class control {
                         Message_change("We need more guards we serve a long time and we need more rest");
                         break;
                     case 3:
-                        Message_change("We caught a noblemans son stealing should we get money from his father to pay for his freedom?");
+                        Message_change("We caught a noblemans son stealing \nshould we get money from his father to pay for his freedom?");
 
                         break;
                     case 4:
@@ -79,7 +78,7 @@ public class control {
             case 2:
                 person_change("General");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("We need to get new recruits because the enemy is raiding us");
                         break;
@@ -87,13 +86,13 @@ public class control {
                         Message_change("After our last battle the spoils were great should we turn it into money?");
                         break;
                     case 3:
-                        Message_change("Some merchants are getting bossy around town should we arrest one or two to make them stop?");
+                        Message_change("Some merchants are getting bossy around town \nshould we arrest one or two to make them stop?");
                         break;
                     case 4:
-                        Message_change("We need better armour and weapons or we will lose the upcoming war we can leave the old ones for later");
+                        Message_change("We need better armour and weapons or we will lose the upcoming war\n we can leave the old ones for later");
                         break;
                     case 5:
-                        Message_change("During one expedition a soldier found an artifact it could fetch a nice sum");
+                        Message_change("During one expedition a soldier found an artifact \nit could fetch a nice sum");
                         break;
                     default:
                         Message_change("The military is as strong as ever");
@@ -102,7 +101,7 @@ public class control {
             case 3:
                 person_change("Cook");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("It's about time we make a feast? ");
                         break;
@@ -110,10 +109,10 @@ public class control {
                         Message_change("Want to try this dish of the new species we found last month? ");
                         break;
                     case 3:
-                        Message_change("I need more ingredients or i won't be able to serve the required amount of servings could you do something about it.");
+                        Message_change("I need more ingredients or i won't be able to serve the required amount of servings\n could you do something about it.");
                         break;
                     case 4:
-                        Message_change("After the last party we have many leftovers should i give it to the people or sell to the merchants? ");
+                        Message_change("After the last party we have many leftovers\n should i give it to the people or sell to the merchants? ");
                         break;
                     case 5:
                         Message_change("Can i get some new pans and pots? The old ones are starting to stick ");
@@ -125,7 +124,7 @@ public class control {
             case 4:
                 person_change("Peasant");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("Could you lover the taxes the crops are low this year?");
                         break;
@@ -139,7 +138,7 @@ public class control {
                         Message_change("We had a great harvest what to do with all that grain?");
                         break;
                     case 5:
-                        Message_change("I think my neighbour is stealing my chickens and the guards are ignoring me could you give them a word? ?");
+                        Message_change("I think my neighbour is stealing my chickens and the guards are ignoring me \ncould you give them a word? ?");
                         break;
                     default:
                         Message_change("I am sorry my problem was just dealt with. ");
@@ -148,12 +147,12 @@ public class control {
             case 5:
                 person_change("Merchant");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
-                        Message_change("We come to get the allowance to sell this good from our neighbour will it be possible? ");
+                        Message_change("We come to get the allowance to sell \nthis good from our neighbour will it be possible? ");
                         break;
                     case 2:
-                        Message_change("How about you sell us some iron so we can get better weapons from our neighbour?");
+                        Message_change("How about you sell us some iron so we can \nget better weapons from our neighbour?");
                         break;
                     case 3:
                         Message_change("How about investing some money? ");
@@ -171,7 +170,7 @@ public class control {
             case 6:
                 person_change("Nobleman");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("How about we get some of the iron reserved for the army?");
                         break;
@@ -185,7 +184,7 @@ public class control {
                         Message_change("Could you lend us some of your guards for our travel?");
                         break;
                     case 5:
-                        Message_change("We have to few influence we need more or the other classes will take over");
+                        Message_change("We have to few influence \nwe need more or the other classes will take over");
                         break;
                     default:
                         Message_change("We have everything we want or need");
@@ -194,7 +193,7 @@ public class control {
             case 7:
                 person_change("Advisor");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("We should build more warehouses.");
                         break;
@@ -217,7 +216,7 @@ public class control {
             case 8:
                 person_change("Emissary");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("I came to negotiate the peace treaty.");
                         break;
@@ -228,10 +227,10 @@ public class control {
                         Message_change("How about creating a trade route between our countries?");
                         break;
                     case 4:
-                        Message_change("Could our country borrow money from you we will recompensate you with iron");
+                        Message_change("Could our country borrow money from you \nwe will recompensate you with iron");
                         break;
                     case 5:
-                        Message_change("We came to ask for your help in our war against the King of the West");
+                        Message_change("We came to ask for your help in our war against \nthe King of the West");
                         break;
                     default:
                         Message_change("My king sends his regards");
@@ -240,18 +239,18 @@ public class control {
             case 9:
                 person_change("Misionary");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("We came in peace to bring the message of our savior.");
                         break;
                     case 2:
-                        Message_change("We are good at cultivating the land we can share some of our knowledge for a bit of founding");
+                        Message_change("We are good at cultivating the land we can share some of our \nknowledge for a bit of founding");
                         break;
                     case 3:
                         Message_change("Some people disrespect us and threaten us could you help us?");
                         break;
                     case 4:
-                        Message_change("We help your people and some of us going to other countries could we count on you?");
+                        Message_change("We help your people and some of us going to other countries \ncould we count on you?");
                         break;
                     case 5:
                         Message_change("Can we get some land to build a place for our believers?");
@@ -263,12 +262,13 @@ public class control {
             case 10:
                 person_change("Treasurer");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("We need to reform the taxes!");
                         break;
                     case 2:
-                        Message_change("Some soldiers are hoarding a great sum of money and iron we should increase their taxes");
+                        Message_change("Some soldiers are hoarding a great sum of money and iron \nwe should increase" +
+                                " their taxes");
                         break;
                     case 3:
                         Message_change("We can sell some of our old weapons and armour for money.");
@@ -277,7 +277,7 @@ public class control {
                         Message_change("We should create a reserve of money for the future");
                         break;
                     case 5:
-                        Message_change("The nobles are trying to hoard the money of the regular tax we should collect it as soon as possible");
+                        Message_change("The nobles are trying to hoard the money of the regular tax\n we should collect it as soon as possible");
                         break;
                     default:
                         Message_change("Our country is prospering great!");
@@ -286,7 +286,7 @@ public class control {
             default:
                 person_change("Queen");
                 problem = random.nextInt(6);
-                switch (this.problem) {
+                switch (problem) {
                     case 1:
                         Message_change("How about we go hunting?");
                         break;
@@ -379,19 +379,19 @@ public class control {
 
 
     @FXML
-    void yes() throws InterruptedException {
+    void yes() throws InterruptedException, FileNotFoundException {
         wybor(1,character,problem);
         game();
     }
 
     @FXML
-    void no() throws InterruptedException {
+    void no() throws InterruptedException, FileNotFoundException {
         wybor(0,character,problem);
         game();
     }
 
     @FXML
-    void wybor(int w,int character,int problem){
+    void wybor(int w,int character,int problem) throws FileNotFoundException, InterruptedException {
         this.Yes.setText("1.Yes");
         this.No.setText("2.No");
         switch (character) {
@@ -950,7 +950,9 @@ public class control {
                         ++happines;
                 }
                 if (!death) {
-                    death = checkIfDead.check(iron, happines, food, money); } } }
+                    death = checkIfDead.check(iron, happines, food, money); } }
+                    checker();
+    }
 
 
     @FXML

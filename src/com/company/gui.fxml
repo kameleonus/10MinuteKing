@@ -33,7 +33,7 @@
          </font></Label>
     </top>
     <center>
-        <Label fx:id="message" alignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
+        <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="400.0" textAlignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Label>
