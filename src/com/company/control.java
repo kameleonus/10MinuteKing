@@ -48,6 +48,8 @@ public class control {
     void game() throws InterruptedException {
         Message_change("Welcome to the game");
         Message_change("The year is " + year + " and the audience of the King begins...");
+        Yes.setDisable(false);
+        No.setDisable(false);
         character = random.nextInt(11);
         switch (character) {
             case 1:
