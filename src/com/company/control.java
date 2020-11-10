@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 
 import java.io.*;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,8 +48,7 @@ public class control {
     }
     int character,problem;
     @FXML
-    void game(){
-        Message_change("Welcome to the game");
+    void game() {
         Message_change("The year is " + year + " and the audience of the King begins...");
         Yes.setDisable(false);
         No.setDisable(false);
@@ -387,12 +387,14 @@ public class control {
     @FXML
     void yes() throws InterruptedException, FileNotFoundException {
         wybor(1,character,problem);
+        TimeUnit.SECONDS.sleep(1);
         game();
     }
 
     @FXML
     void no() throws InterruptedException, FileNotFoundException {
         wybor(0,character,problem);
+        TimeUnit.SECONDS.sleep(1);
         game();
     }
 
@@ -913,7 +915,7 @@ public class control {
                         Message_change("How about we go hunting?");
                         if (w == 1) {
                             if (hunt(w) == 1) {
-                                death = true;
+                                death=true;
                             } else {
                                 food += 2;
                             }
@@ -972,7 +974,10 @@ public class control {
     }
     @FXML
     int hunter() {
-        return 1;
+        if(iron<3)
+        {return 1;}
+        else
+            return 0;
     }
   @FXML
     int hunt(int w){
