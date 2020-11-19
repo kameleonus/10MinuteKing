@@ -146,7 +146,7 @@ public class control {
                         this.No.setText("No");
                         break;
                     case 3:
-                        Message_change("I need more ingredients or i won't be able to serve the required amount of servings\n could you do something about it.");
+                        Message_change("I need more ingredients or i won't be able to serve the required amount\n of servings could you do something about it.");
                         this.Yes.setText("Yes");
                         this.No.setText("No");
                         break;
