@@ -10,7 +10,7 @@
     <left>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="151.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="Yes" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf" visible="false">
+                <Button fx:id="Yes" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf" visible="false">
                <font>
                   <Font size="16.0" />
                </font></Button>
@@ -20,7 +20,7 @@
     <right>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="151.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="No" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0" visible="false">
+                <Button fx:id="No" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0" visible="false">
                <font>
                   <Font size="16.0" />
                </font></Button>
