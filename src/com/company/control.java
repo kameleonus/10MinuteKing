@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class control {
-    ExecutorService executorService = Executors.newFixedThreadPool(2);
     @FXML
     private Button Yes;
     @FXML
@@ -23,8 +22,6 @@ public class control {
     private Label message;
     @FXML
     private Label stuff;
-    @FXML
-    private Button Run;
     long start = System.currentTimeMillis()/1000;
 //start game poyem wywal teksty komunikatu i z losu tego zrobićwarośći w chocie io na to z tych danych game
 // wywołujesz co zmienia
@@ -184,11 +181,11 @@ public class control {
                     case 3:
                         Message_change("It's the plague the cows are dying!");
                         this.Yes.setText("Don't worry");
-                        this.No.setText("Kill them all or it will spread");
+                        this.No.setText("Kill them all \nor it will spread");
                         break;
                     case 4:
                         Message_change("We had a great harvest what to do with all that grain?");
-                        this.Yes.setText("Give to the people");
+                        this.Yes.setText("Give to \nthe people");
                         this.No.setText("Sell");
                         break;
                     case 5:
@@ -524,19 +521,19 @@ public class control {
 
 
     @FXML
-    void yes() throws InterruptedException, FileNotFoundException, ExecutionException {
+    void yes() throws InterruptedException, FileNotFoundException{
         wybor(1,character,problem);
         game();
     }
 
     @FXML
-    void no() throws InterruptedException, FileNotFoundException, ExecutionException {
+    void no() throws InterruptedException, FileNotFoundException {
         wybor(0,character,problem);
         game();
     }
 
     @FXML
-    void wybor(int w,int character,int problem) throws FileNotFoundException, InterruptedException, ExecutionException {
+    void wybor(int w,int character,int problem) throws FileNotFoundException, InterruptedException {
         switch (character) {
             case 1:
                 switch (problem) {
@@ -1049,11 +1046,7 @@ public class control {
                     case 1:
                         Message_change("How about we go hunting?");
                         if (w == 1) {
-                            if (hunt() == 1) {
-                                death=true;
-                            } else {
-                                food += 2;
-                            }
+                            food++;
                         } else {
                             --happines;
                         }
@@ -1108,33 +1101,5 @@ public class control {
         this.message.setText(mesage);
     }
 
-  @FXML
-    int hunt() throws InterruptedException, ExecutionException {
-        this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
-        TimeUnit.SECONDS.sleep(2);
-        Run.setVisible(true);
-        Run.setDisable(false);
-        Future<Integer> x = executorService.submit(run);
-        Integer result = x.get();
-        if (result == 1) {
-            return 1;
-        } else {
-            this.message.setText("While you run you see the dear again after going after it you finally are able to kill it and bring it back with you after the hunters find you.");
-            return 0;
-        }
-    }
-    @FXML
-    Callable<Integer> run =()-> {
-        this.message.setText("");
-        this.Run.setText("RUN");
-        Run.setVisible(false);
-        Run.setDisable(true);
-        if (run()==1)
-        return 1;
-        else return 0;
-    };
-    public int run()
-    {
-        return 1;
-    }
+
 }

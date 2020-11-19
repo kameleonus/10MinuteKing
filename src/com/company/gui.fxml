@@ -33,12 +33,12 @@
          </font></Label>
     </top>
     <center>
-        <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="438.0" textAlignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
+        <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="438.0" textAlignment="CENTER" textFill="#c1bcd0" wrapText="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
          <graphic>
-            <Button fx:id="Run" disable="true" mnemonicParsing="false" onAction="#run" visible="false" />
+            <Button fx:id="Run" disable="true" mnemonicParsing="false" onAction="#run" text="RUN" visible="false" />
          </graphic></Label>
     </center>
    <bottom>
