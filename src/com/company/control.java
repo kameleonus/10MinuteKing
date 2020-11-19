@@ -506,14 +506,12 @@ public class control {
             {
                 message.setText("You are dead");
                 end end= new end();
-                TimeUnit.SECONDS.sleep(3);
                 end.end();
 
             }
             else if(System.currentTimeMillis()/1000-start>600){
                 message.setText("we see you next time");
                 end end= new end();
-                TimeUnit.SECONDS.sleep(3);
                 end.end();
             }
           }
@@ -523,14 +521,12 @@ public class control {
     @FXML
     void yes() throws InterruptedException, FileNotFoundException {
         wybor(1,character,problem);
-        TimeUnit.SECONDS.sleep(1);
         game();
     }
 
     @FXML
     void no() throws InterruptedException, FileNotFoundException {
         wybor(0,character,problem);
-        TimeUnit.SECONDS.sleep(1);
         game();
     }
 
@@ -1048,7 +1044,7 @@ public class control {
                     case 1:
                         Message_change("How about we go hunting?");
                         if (w == 1) {
-                            if (hunt(w) == 1) {
+                            if (hunt() == 1) {
                                 death=true;
                             } else {
                                 food += 2;
@@ -1114,7 +1110,7 @@ public class control {
             return 0;
     }
   @FXML
-    int hunt(int w){
+    int hunt(){
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
         int choice = this.hunter();
         if (choice == 1) {

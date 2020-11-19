@@ -1,8 +1,10 @@
 package com.company;
 
+import java.util.concurrent.TimeUnit;
+
 public class end {
     void end() throws InterruptedException {
-        Thread.sleep(3000);
+        TimeUnit.SECONDS.sleep(3);
         System.exit(1);
     }
 }
