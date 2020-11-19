@@ -4,12 +4,13 @@ import javafx.fxml.FXML;
 
 import java.io.*;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class control {
+    ExecutorService executorService = Executors.newFixedThreadPool(2);
     @FXML
     private Button Yes;
     @FXML
@@ -152,7 +153,7 @@ public class control {
                         break;
                     case 4:
                         Message_change("After the last party we have many leftovers\n should i give it to the people or sell to the merchants? ");
-                        this.Yes.setText("Give to the people");
+                        this.Yes.setText("Give to\n the people");
                         this.No.setText("Sell");
                         break;
                     case 5:
@@ -317,8 +318,8 @@ public class control {
                         break;
                     case 2:
                         Message_change("War it is!");
-                        this.Yes.setText("We will fight till the end");
-                        this.No.setText("It is you who want it");
+                        this.Yes.setText("We will \nfight till the end");
+                        this.No.setText("It is you\n who want it");
                         break;
                     case 3:
                         Message_change("How about creating a trade route between our countries?");
@@ -508,13 +509,13 @@ public class control {
             save.save(death,year,iron,happines,food,money);
             if(death)
             {
-                message.setText("You are dead");
+                Message_change("You are dead");
                 end end= new end();
                 end.end();
 
             }
             else if(System.currentTimeMillis()/1000-start>600){
-                message.setText("we see you next time");
+                Message_change("we see you next time");
                 end end= new end();
                 end.end();
             }
@@ -523,19 +524,19 @@ public class control {
 
 
     @FXML
-    void yes() throws InterruptedException, FileNotFoundException {
+    void yes() throws InterruptedException, FileNotFoundException, ExecutionException {
         wybor(1,character,problem);
         game();
     }
 
     @FXML
-    void no() throws InterruptedException, FileNotFoundException {
+    void no() throws InterruptedException, FileNotFoundException, ExecutionException {
         wybor(0,character,problem);
         game();
     }
 
     @FXML
-    void wybor(int w,int character,int problem) throws FileNotFoundException, InterruptedException {
+    void wybor(int w,int character,int problem) throws FileNotFoundException, InterruptedException, ExecutionException {
         switch (character) {
             case 1:
                 switch (problem) {
@@ -1106,30 +1107,34 @@ public class control {
     void Message_change(String mesage) {
         this.message.setText(mesage);
     }
-    @FXML
-    int hunter() {
-        if(iron<3)
-        {return 1;}
-        else
-            return 0;
-    }
+
   @FXML
-    int hunt() throws InterruptedException {
+    int hunt() throws InterruptedException, ExecutionException {
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
         TimeUnit.SECONDS.sleep(2);
         Run.setVisible(true);
-        int x=run();
-        if (x == 1) {
+        Run.setDisable(false);
+        Future<Integer> x = executorService.submit(run);
+        Integer result = x.get();
+        if (result == 1) {
             return 1;
         } else {
             this.message.setText("While you run you see the dear again after going after it you finally are able to kill it and bring it back with you after the hunters find you.");
             return 0;
         }
     }
-@FXML
-    private int run() {
+    @FXML
+    Callable<Integer> run =()-> {
         this.message.setText("");
         this.Run.setText("RUN");
+        Run.setVisible(false);
+        Run.setDisable(true);
+        if (run()==1)
+        return 1;
+        else return 0;
+    };
+    public int run()
+    {
         return 1;
     }
 }
