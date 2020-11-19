@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #4466AA;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.control">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="737.0" style="-fx-background-color: #4466AA;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.control">
     <left>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="151.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="Yes" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf" visible="false">
+                <Button fx:id="Yes" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf" visible="false">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font></Button>
             </children>
         </VBox>
     </left>
     <right>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="151.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="No" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0" visible="false">
+                <Button fx:id="No" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0" visible="false">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font></Button>
             </children></VBox>
     </right>
@@ -33,12 +33,12 @@
          </font></Label>
     </top>
     <center>
-        <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="400.0" textAlignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
+        <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="438.0" textAlignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
          <graphic>
-            <Button fx:id="Run" mnemonicParsing="false" onAction="#run" visible="false" />
+            <Button fx:id="Run" disable="true" mnemonicParsing="false" onAction="#run" visible="false" />
          </graphic></Label>
     </center>
    <bottom>

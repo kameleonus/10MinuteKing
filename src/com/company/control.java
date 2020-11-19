@@ -348,8 +348,8 @@ public class control {
                 switch (problem) {
                     case 1:
                         Message_change("We came in peace to bring the message of our savior.");
-                        this.Yes.setText("Welcome in our country");
-                        this.No.setText("You are not welcome here");
+                        this.Yes.setText("Welcome in\n our country");
+                        this.No.setText("You are not\n welcome here");
                         break;
                     case 2:
                         Message_change("We are good at cultivating the land we can share some of our \nknowledge for a bit of founding");
