@@ -10,7 +10,7 @@
     <left>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="Yes" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf">
+                <Button fx:id="Yes" disable="true" mnemonicParsing="false" onAction="#yes" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="Yes" textFill="#c1bccf" visible="false">
                <font>
                   <Font size="18.0" />
                </font></Button>
@@ -20,7 +20,7 @@
     <right>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="No" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0">
+                <Button fx:id="No" disable="true" mnemonicParsing="false" onAction="#no" style="-fx-background-color: #446699; -fx-border-color: #5577AA;" text="No" textFill="#c1bcd0" visible="false">
                <font>
                   <Font size="18.0" />
                </font></Button>
@@ -36,7 +36,10 @@
         <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="400.0" textAlignment="CENTER" textFill="#c1bcd0" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
-         </font></Label>
+         </font>
+         <graphic>
+            <Button fx:id="Run" mnemonicParsing="false" onAction="#run" visible="false" />
+         </graphic></Label>
     </center>
    <bottom>
       <VBox alignment="CENTER" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">

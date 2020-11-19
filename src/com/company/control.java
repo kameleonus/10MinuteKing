@@ -22,6 +22,8 @@ public class control {
     private Label message;
     @FXML
     private Label stuff;
+    @FXML
+    private Button Run;
     long start = System.currentTimeMillis()/1000;
 //start game poyem wywal teksty komunikatu i z losu tego zrobićwarośći w chocie io na to z tych danych game
 // wywołujesz co zmienia
@@ -52,6 +54,8 @@ public class control {
         Message_change("The year is " + year + " and the audience of the King begins...");
         Yes.setDisable(false);
         No.setDisable(false);
+        Yes.setVisible(true);
+        No.setVisible(true);
         Start0.setVisible(false);
         Start0.setDisable(true);
         character = random.nextInt(11);
@@ -1110,14 +1114,22 @@ public class control {
             return 0;
     }
   @FXML
-    int hunt(){
+    int hunt() throws InterruptedException {
         this.message.setText("You strive through the wood when you see a dear.\nYou chase after it for a while when you encounter a bear\"\nWhat do you do?\n1.Attack\n2.Run");
-        int choice = this.hunter();
-        if (choice == 1) {
+        TimeUnit.SECONDS.sleep(2);
+        Run.setVisible(true);
+        int x=run();
+        if (x == 1) {
             return 1;
         } else {
             this.message.setText("While you run you see the dear again after going after it you finally are able to kill it and bring it back with you after the hunters find you.");
             return 0;
         }
+    }
+@FXML
+    private int run() {
+        this.message.setText("");
+        this.Run.setText("RUN");
+        return 1;
     }
 }
