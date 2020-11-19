@@ -36,10 +36,7 @@
         <Label fx:id="message" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="438.0" textAlignment="CENTER" textFill="#c1bcd0" wrapText="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
-         </font>
-         <graphic>
-            <Button fx:id="Run" disable="true" mnemonicParsing="false" onAction="#run" text="RUN" visible="false" />
-         </graphic></Label>
+         </font></Label>
     </center>
    <bottom>
       <VBox alignment="CENTER" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
